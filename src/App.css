@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
+:root {
+  --bg-first: #8c52ff;
+  --bg-second: #ff5050;
+  --link-first: #8c52ff;
+  --link-second: #ff5050;
+  --bg-body: #ebe9e9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--bg-body) !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-custom-one {
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: var(--link-first);
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+
+.btn-custom-one:hover {
+  background: #0069d9;
+}
+
+.btn-custom-two {
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: var(--link-second) !important;
+  color: #fff !important;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+
+.btn-custom-two:hover {
+  background: #bf3b31;
+}
+
+.btn-social {
+  color: white !important;
+  border: 0;
+  font-weight: bold;
+}
+
+.btn-facebook {
+  background: #4866a8 !important;
+}
+
+.btn-google {
+  background: #da3f34 !important;
+}
+
+.btn-facebook:hover {
+  background: #3d578f !important;
+}
+
+.btn-google:hover {
+  background: #bf3b31 !important;
+}
+
+#languageSelectBtn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.spinner-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #6d6d6d; 
 }

@@ -1,0 +1,19 @@
+{
+  "signUp": "Kayıt Ol",
+  "login": "Giriş Yap",
+  "email": "E-posta",
+  "password": "Şifre",
+  "passwordRepeat": "Şifre Tekrar",
+  "passwordMismatch": "Şifreler eşleşmiyor",
+  "genericError": "Beklenmeyen bir hata meydana geldi. Lütfen tekrar deneyin.",
+  "ori": "veya",
+  "firstNameLabel": "Adınız...",
+  "lastNameLabel": "Soyadınız...",
+  "emailLabel": "E-posta adresiniz...",
+  "passwordLabel": "Şifreniz...",
+  "passwordRepeatLabel": "Şifre tekrar...",
+  "alreadyAccount": "Zaten hesabınız var mı?",
+  "rememberMe": "Beni hatırla",
+  "forgotPassword": "Şifremi unuttum",
+  "dontAccount": "Hesabınız yok mu?"
+}

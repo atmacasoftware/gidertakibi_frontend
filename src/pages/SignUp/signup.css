@@ -1,0 +1,98 @@
+#signup{
+    height: 100vh;
+    background: var(--bg-first);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.card{
+    overflow: hidden;
+    border: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.img-right{
+    width: 45%;
+    background: url("../../assests/images/signup.png") center;
+    background-size: cover;
+}
+
+.card-body{
+    padding: 2rem;
+    overflow: auto;
+}
+
+.logo{
+    height: 50px;
+    width: auto;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.form-input {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#signup .form-input input{
+    padding-left: 20px !important;
+}
+
+#signup .form-input span.error{
+    font-size: 12px;
+    margin-left: 10px;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+}
+
+.form-input input::placeholder{
+    color: black;
+    padding-left: 0px;
+}
+
+
+.form-input input:focus, .form-input input:valid{
+    border: 2px solid #007bff;
+}
+
+.form-input input:focus::placeholder{
+    color: #454b69;
+}
+
+.custom-checkbox .form-check-input:checked ~ .form-check-label::before{
+    background-color: #007bff !important;
+    border: 0px;
+}
+
+.forget-link, .register-link {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+.forget-link:hover, .register-link:hover{
+    color: #0069d9;
+}
+
+@media screen and (max-width: 400px) {
+    
+    #signup .container {
+        overflow: hidden;
+        padding: 20px;
+    }
+
+    #signup .card-body {
+        height: 90vh;
+        overflow: auto;
+    }
+}
+

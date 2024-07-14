@@ -1,0 +1,18 @@
+{
+  "signUp": "Sign Up",
+  "email": "E-mail",
+  "password": "Password",
+  "passwordRepeat": "Password Repeat",
+  "passwordMismatch": "Password mismatch",
+  "genericError": "Unexcepted error occured. Please try again.",
+  "ori": "or",
+  "firstNameLabel": "Your name...",
+  "lastNameLabel": "Your lastname...",
+  "emailLabel": "Your e-mail address...",
+  "passwordLabel": "Your password...",
+  "passwordRepeatLabel": "Your password repeat...",
+  "alreadyAccount": "Already have an account?",
+  "rememberMe": "Remember me",
+  "forgotPassword": "I forgot my password",
+  "dontAccount": "Don't have an account?"
+}
