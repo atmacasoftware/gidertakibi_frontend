@@ -8,6 +8,30 @@ import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const { t } = useTranslation();
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setSuccessMessage();
+    setGeneralError();
+    setApiProgress(true);
+
+    try {
+      const response = await signUp({ email, password });
+      setSuccessMessage(response.data.message);
+    } catch (axiosError) {
+      if (axiosError.response?.data) {
+        if (axiosError.response.data.code === "400") {
+          setErrors(axiosError.response.data.errorList);
+        } else {
+          setGeneralError(axiosError.response.data.message);
+        }
+      } else {
+        setGeneralError(t("genericError"));
+      }
+    } finally {
+      setApiProgress(false);
+    }
+  };
+
   return (
     <div id="login">
       <div className="container">
@@ -19,7 +43,7 @@ export default function Login() {
               <img src={logo} alt="Logo" className="logo" />
             </div>
             <h4 className="title text-center mt-4 text-capitalize">{t("login")}</h4>
-            <form className="form-box px-3">
+            <form className="form-box px-3" onSubmit={onSubmit}>
               <div className="form-input">
                 <span>
                   <FaEnvelope />

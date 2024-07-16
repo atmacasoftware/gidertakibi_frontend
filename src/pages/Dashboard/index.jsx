@@ -1,9 +1,8 @@
-import { Navbar } from "./components/navbar";
-import { Sidebar } from "./components/sidebar";
+import { Navbar } from "./shared/navbar";
+import { Sidebar } from "./shared/sidebar";
 import { useEffect, useState } from "react";
 import "./components/style.css";
-import { Link } from "react-router-dom";
-import { PageHeader } from "./components/PageHeader";
+import { PageHeader } from "./shared/PageHeader";
 
 export function Dashboard() {
   const [width, setwidth] = useState(window.innerWidth);

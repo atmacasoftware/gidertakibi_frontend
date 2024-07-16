@@ -22,7 +22,7 @@ export function Sidebar() {
   };
 
   const toogleSubMenu = (name) => {
-    if (name == "users") {
+    if (name === "users") {
       if (isUserOpen == true) {
         setisUserOpen(false);
       } else {
@@ -30,8 +30,8 @@ export function Sidebar() {
       }
     }
 
-    if (name == "settings") {
-      if (isSettingsOpen == true) {
+    if (name === "settings") {
+      if (isSettingsOpen === true) {
         setIsSettingsOpen(false);
       } else {
         setIsSettingsOpen(true);
@@ -73,12 +73,12 @@ export function Sidebar() {
             <div className="menu">
               <ul>
                 <li className={pathName == "/dashboard" ? "active" : ""}>
-                  <a href="">
+                  <Link to="/dashboard">
                     <RiDashboardFill className="main-icon" />
                     <span className="text">Anasayfa</span>
-                  </a>
+                  </Link>
                 </li>
-                <li className="menu-item">
+                <li className={`menu-item ${pathName == "/users" ? "active" : ""}`}>
                   <a href="#" onClick={() => toogleSubMenu("users")}>
                     <HiUsers className="main-icon" />
                     <span className="text">Kullanıcılar</span>
@@ -89,9 +89,9 @@ export function Sidebar() {
                       <RiArrowDownSLine className="arrow-icon" />
                     )}
                   </a>
-                  <ul className={`sub-menu ${isUserOpen ? "active" : ""}`}>
+                  <ul className={`sub-menu ${isUserOpen || pathName == "/users" ? "active" : ""}`}>
                     <li>
-                      <Link to="/kullanicilar">
+                      <Link to="/users" className={`${pathName == "/users" ? "active" : ""}`}>
                         <span className="text">Tüm Kullanıcılar</span>
                       </Link>
                     </li>
@@ -102,10 +102,6 @@ export function Sidebar() {
                     </li>
                   </ul>
                 </li>
-              </ul>
-            </div>
-            <div className="menu">
-              <ul>
                 <li className="menu-item">
                   <a href="#" onClick={() => toogleSubMenu("settings")}>
                     <IoSettingsSharp className="main-icon" />

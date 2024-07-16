@@ -26,7 +26,7 @@ export default createBrowserRouter([
                 Component: Dashboard
             },
             {
-                path: "/kullanicilar",
+                path: "/users",
                 index: true,
                 Component: Users
             },

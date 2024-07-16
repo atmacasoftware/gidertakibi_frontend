@@ -1,6 +1,7 @@
-import { Navbar } from "../components/navbar";
-import { PageHeader } from "../components/PageHeader";
-import { Sidebar } from "../components/sidebar";
+import { Table } from "../components/table";
+import { Navbar } from "../shared/navbar";
+import { PageHeader } from "../shared/PageHeader";
+import { Sidebar } from "../shared/sidebar";
 
 export function Users() {
   return (
@@ -8,7 +9,13 @@ export function Users() {
       <Sidebar />
       <Navbar />
       <div className="main-content">
-        <PageHeader title="Kullanıclar" breadList={[['kullanicilar', 'Kullanıcılar']]}/>
+        <PageHeader
+          title="Kullanıclar"
+          breadList={[["kullanicilar", "Kullanıcılar"]]}
+        />
+        <div className="content">
+          <Table />
+        </div>
       </div>
     </div>
   );
