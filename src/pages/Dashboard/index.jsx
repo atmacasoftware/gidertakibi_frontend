@@ -6,6 +6,7 @@ import { PageHeader } from "./shared/PageHeader";
 
 export function Dashboard() {
   const [width, setwidth] = useState(window.innerWidth);
+
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWitdh = window.innerWidth;
@@ -20,7 +21,7 @@ export function Dashboard() {
     <div className="dashboard-panel">
       <Sidebar />
       <Navbar />
-      <div className={`main-content ${width < 768 ? "active" : ""}`}>
+      <div className={`main-content ${width < 768 ? "active" : ""} ${width < 420 ? "mobile_active" : ""}`}>
         <div className="container-fluid">
           <PageHeader title="Anasayfa"/>
         </div>

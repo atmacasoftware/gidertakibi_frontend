@@ -7,18 +7,28 @@ import { useEffect, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineLogout } from "react-icons/ai";
 import { MdOutlineMenuOpen } from "react-icons/md";
+import { useAuthDispatch, useAuthState } from "../../../shared/state/contex";
 
 export function Sidebar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpenMenuMobile, setIsOpenMenuMobile] = useState(false);
   const [isUserOpen, setisUserOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [width, setwidth] = useState(window.innerWidth);
+  const authState = useAuthState();
+  const dispatch = useAuthDispatch();
 
   const location = useLocation();
   const pathName = location.pathname;
 
   const toogleMenu = () => {
     isOpenMenu === true ? setIsOpenMenu(false) : setIsOpenMenu(true);
+  };
+
+  const toogleMenuMobile = () => {
+    isOpenMenuMobile === true
+      ? setIsOpenMenuMobile(false)
+      : setIsOpenMenuMobile(true);
   };
 
   const toogleSubMenu = (name) => {
@@ -42,7 +52,7 @@ export function Sidebar() {
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWitdh = window.innerWidth;
-      setwidth(newWitdh);      
+      setwidth(newWitdh);
     };
 
     window.addEventListener("resize", updateWindowDimensions);
@@ -54,11 +64,17 @@ export function Sidebar() {
     <>
       <div className="container sidebar-container">
         <div
-          className={`sidebar ${isOpenMenu && width > 768 ? "active" : ""} ${
-            width < 768 && !isOpenMenu ? "active" : ""
-          }`}
+          className={`sidebar mobile ${
+            isOpenMenu && width > 768 ? "active" : ""
+          } ${width < 768 && !isOpenMenu ? "active" : ""}
+            ${isOpenMenu && width < 420 ? "mobile" : ""}
+           ${width < 420 && isOpenMenuMobile ? "mobile_active" : ""}
+          `}
         >
-          <div className="menu-btn" onClick={toogleMenu}>
+          <div
+            className="menu-btn"
+            onClick={width < 420 ? toogleMenuMobile : toogleMenu}
+          >
             <MdOutlineMenuOpen />
           </div>
           <div className="head">
@@ -66,7 +82,9 @@ export function Sidebar() {
               <img src={userImg} alt="User Image" />
             </div>
             <div className="user-details">
-              <p className="name">Ahmet Atmaca</p>
+              <p className="name">
+                {authState.first_name} {authState.last_name}
+              </p>
             </div>
           </div>
           <div className="nav">
@@ -78,7 +96,11 @@ export function Sidebar() {
                     <span className="text">Anasayfa</span>
                   </Link>
                 </li>
-                <li className={`menu-item ${pathName == "/users" ? "active" : ""}`}>
+                <li
+                  className={`menu-item ${
+                    pathName == "/users" ? "active" : ""
+                  }`}
+                >
                   <a href="#" onClick={() => toogleSubMenu("users")}>
                     <HiUsers className="main-icon" />
                     <span className="text">Kullanıcılar</span>
@@ -89,9 +111,16 @@ export function Sidebar() {
                       <RiArrowDownSLine className="arrow-icon" />
                     )}
                   </a>
-                  <ul className={`sub-menu ${isUserOpen || pathName == "/users" ? "active" : ""}`}>
+                  <ul
+                    className={`sub-menu ${
+                      isUserOpen || pathName == "/users" ? "active" : ""
+                    }`}
+                  >
                     <li>
-                      <Link to="/users" className={`${pathName == "/users" ? "active" : ""}`}>
+                      <Link
+                        to="/users"
+                        className={`${pathName == "/users" ? "active" : ""}`}
+                      >
                         <span className="text">Tüm Kullanıcılar</span>
                       </Link>
                     </li>

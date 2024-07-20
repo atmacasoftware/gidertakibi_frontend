@@ -17,7 +17,7 @@ export function Navbar() {
   }, []);
   return (
     <>
-      <div className={`header ${width < 768 ? "active" : ""}`}>
+      <div className={`header ${width < 768 ? "active" : ""} ${width < 420 ? "mobile_active" : ""}`}>
         <nav className="navbar navbar-expand">
           <div className="container-fluid">
             <div

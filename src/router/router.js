@@ -3,7 +3,7 @@ import App from "../App"
 import Login from "../pages/Login"
 import SignUp from "../pages/SignUp"
 import { Dashboard } from "../pages/Dashboard"
-import { Users } from "../pages/Dashboard/pages/users"
+import { Users } from "../pages/Dashboard/pages/User/users"
 
 export default createBrowserRouter([
     {
