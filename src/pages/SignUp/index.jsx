@@ -8,6 +8,8 @@ import Spinner from "../../shared/Spinner";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { LanguageSelector } from "../../shared/LanguageSelector";
+import Input from "../Panel/shared/Input";
+import Button from "../Panel/shared/Button";
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState();
@@ -104,7 +106,7 @@ export default function SignUp() {
 
   return (
     <div id="signup">
-    <LanguageSelector />
+      <LanguageSelector />
       {apiProgress && <Spinner />}
       <div className="container">
         <div className="row px-3">
@@ -118,14 +120,15 @@ export default function SignUp() {
                 <div className="row">
                   <div className="col-md-6 col-lg-6 col-xl- col-sm-12">
                     <div className="form-input">
-                      <input
+                      <Input
                         type="text"
                         name="first_name"
                         placeholder={t("firstNameLabel")}
                         tabIndex="10"
-                        required
+                        isRequired={true}
                         onChange={(event) => setFirstName(event.target.value)}
                       />
+
                       {errors.firstName && (
                         <span className="error text-danger">
                           Adınız boş olamaz!
@@ -135,14 +138,15 @@ export default function SignUp() {
                   </div>
                   <div className="col-md-6 col-lg-6 col-xl-6 col-sm-12">
                     <div className="form-input">
-                      <input
+                      <Input
                         type="text"
                         name="last_name"
                         placeholder={t("lastNameLabel")}
                         tabIndex="10"
-                        required
+                        isRequired={true}
                         onChange={(event) => setLastName(event.target.value)}
                       />
+
                       {errors.lastName && (
                         <span className="error text-danger">
                           Soyadınız boş olamaz!
@@ -152,12 +156,12 @@ export default function SignUp() {
                   </div>
                 </div>
                 <div className="form-input">
-                  <input
+                  <Input
                     type="email"
                     name="email"
                     placeholder={t("emailLabel")}
                     tabIndex="10"
-                    required
+                    isRequired={true}
                     onChange={(event) => setEmail(event.target.value)}
                   />
                   {errors.email && (
@@ -167,28 +171,29 @@ export default function SignUp() {
                 <div className="row">
                   <div className="col-md-6 col-lg-6 col-xl- col-sm-12">
                     <div className="form-input">
-                      <input
+                      <Input
                         type="password"
                         name="password"
                         placeholder={t("passwordLabel")}
                         tabIndex="10"
-                        required
+                        isRequired={true}
                         onChange={(event) => setPassword(event.target.value)}
                       />
                     </div>
                   </div>
                   <div className="col-md-6 col-lg-6 col-xl- col-sm-12">
                     <div className="form-input">
-                      <input
+                      <Input
                         type="password"
                         name="passwordRepeat"
                         placeholder={t("passwordRepeatLabel")}
                         tabIndex="10"
-                        required
+                        isRequired={true}
                         onChange={(event) =>
                           setPasswordRepeat(event.target.value)
                         }
                       />
+      
                       {passwordRepeatError && (
                         <span className="error text-danger">
                           Şifreler eşleşmemektedir!
@@ -199,9 +204,8 @@ export default function SignUp() {
                 </div>
 
                 <div className="mb-3">
-                  <button className="btn btn-block text-capitalize text-center w-100 btn-custom-two">
-                    {t("signUp")}
-                  </button>
+                <Button type="submit" btn_display="block" capitalize="capitalize" position="text-center" width="w-100" style="btn-custom-two">{t("signUp")}</Button>
+                  
                 </div>
 
                 <div className="text-center mb-3">{t("ori")}</div>

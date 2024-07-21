@@ -1,11 +1,10 @@
 import { useCallback, useState, useEffect, useMemo } from "react";
-import { Table } from "../../components/Table/table";
-import { Navbar } from "../../shared/navbar";
-import { PageHeader } from "../../shared/PageHeader";
-import { Sidebar } from "../../shared/sidebar";
+import "../../components/style.css";
+import { PageHeader } from "../../shared/PageHeader"
 import { loadUsers } from "./api";
+import Table from "../../components/Table/table";
 
-export function Users() {
+export default function Users() {
   const [userPage, setUserPage] = useState({
     content: [],
     last: false,
@@ -44,18 +43,14 @@ export function Users() {
   const data = userPage.content
 
   return (
-    <div className="dashboard-panel">
-      <Sidebar />
-      <Navbar />
-      <div className="main-content">
-        <PageHeader
+    <>
+      <PageHeader
           title="Kullanıclar"
           breadList={[["kullanicilar", "Kullanıcılar"]]}
         />
         <div className="content">
           <Table columns={columns} data={data} />
         </div>
-      </div>
-    </div>
+    </>
   );
 }

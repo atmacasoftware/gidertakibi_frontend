@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 import { useAuthDispatch } from "../../shared/state/contex";
 import { LanguageSelector } from "../../shared/LanguageSelector";
 import { LoginUser } from "./api";
+import Input from "../Panel/shared/Input";
+import Button from "../Panel/shared/Button"
 
 export default function Login() {
   const { t } = useTranslation();
@@ -82,27 +84,13 @@ export default function Login() {
                   <span>
                     <FaEnvelope />
                   </span>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder={t("emailLabel")}
-                    tabIndex="10"
-                    required
-                    onChange={(event) => setEmail(event.target.value)}
-                  />
+                  <Input type="email" name="email" placeholder={t("emailLabel")} tabIndex="10" isRequired={true} onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <div className="form-input">
                   <span>
                     <RiLockPasswordLine />
                   </span>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder={t("passwordLabel")}
-                    tabIndex="10"
-                    required
-                    onChange={(event) => setPassword(event.target.value)}
-                  />
+                  <Input type="password" name="password" placeholder={t("passwordLabel")} tabIndex="10" isRequired={true} onChange={(event) => setPassword(event.target.value)} />
                 </div>
 
                 <div className="mb-3">
@@ -119,12 +107,7 @@ export default function Login() {
                   </div>
                 </div>
                 <div className="mb-3">
-                  <button
-                    type="submit"
-                    className="btn btn-block text-capitalize text-center w-100 btn-custom-one"
-                  >
-                    {t("login")}
-                  </button>
+                <Button type="submit" btn_display="block" capitalize="capitalize" position="text-center" width="w-100" style="btn-custom-one">{t("login")}</Button>
                 </div>
 
                 <div className="text-end">

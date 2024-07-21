@@ -35,6 +35,9 @@
   border-bottom: 1px solid #f6f6f6;
   align-items: center;
   justify-content: center;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .dashboard-panel .sidebar-container .sidebar .user-img {
@@ -87,7 +90,7 @@
   margin-bottom: 5px;
 }
 
-.dashboard-panel .sidebar-container .sidebar .menu ul li a {
+.dashboard-panel .sidebar-container .sidebar .menu ul li .menu-link, .dashboard-panel .sidebar-container .sidebar .menu ul li a {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -101,8 +104,8 @@
   position: relative;
 }
 
-.dashboard-panel .sidebar-container .sidebar .menu ul li a:hover,
-.dashboard-panel .sidebar-container .sidebar .menu ul li.active > a {
+.dashboard-panel .sidebar-container .sidebar .menu ul li .menu-link:hover, .dashboard-panel .sidebar-container .sidebar .menu ul li a:hover,
+.dashboard-panel .sidebar-container .sidebar .menu ul li.active > .menu-link, .dashboard-panel .sidebar-container .sidebar .menu ul li.active > a {
   color: #000;
   background-color: #f6f6f6;
 }
@@ -208,14 +211,14 @@
   display: none;
 }
 
-.dashboard-panel .sidebar.active .menu > ul > li > a {
+.dashboard-panel .sidebar.active .menu > ul > li > .menu-link {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.dashboard-panel .sidebar.active .menu > ul > li > a .text {
+.dashboard-panel .sidebar.active .menu > ul > li > .menu-link .text {
   display: none;
 }
 

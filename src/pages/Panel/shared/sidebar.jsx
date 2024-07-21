@@ -7,16 +7,13 @@ import { useEffect, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineLogout } from "react-icons/ai";
 import { MdOutlineMenuOpen } from "react-icons/md";
-import { useAuthDispatch, useAuthState } from "../../../shared/state/contex";
 
-export function Sidebar() {
+export function Sidebar({authState, dispatch}) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenMenuMobile, setIsOpenMenuMobile] = useState(false);
   const [isUserOpen, setisUserOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [width, setwidth] = useState(window.innerWidth);
-  const authState = useAuthState();
-  const dispatch = useAuthDispatch();
 
   const location = useLocation();
   const pathName = location.pathname;
@@ -49,6 +46,10 @@ export function Sidebar() {
     }
   };
 
+  const onClickLogout = () => {
+    dispatch({type: 'logout-success'});
+  };
+
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWitdh = window.innerWidth;
@@ -77,8 +78,9 @@ export function Sidebar() {
           >
             <MdOutlineMenuOpen />
           </div>
-          <div className="head">
-            <div className="user-img">
+          <div>
+            <Link to="/my-account" className="head">
+              <div className="user-img">
               <img src={userImg} alt="User Image" />
             </div>
             <div className="user-details">
@@ -86,12 +88,13 @@ export function Sidebar() {
                 {authState.first_name} {authState.last_name}
               </p>
             </div>
+            </Link>
           </div>
           <div className="nav">
             <div className="menu">
               <ul>
                 <li className={pathName == "/dashboard" ? "active" : ""}>
-                  <Link to="/dashboard">
+                  <Link to="/dashboard" className="menu-link">
                     <RiDashboardFill className="main-icon" />
                     <span className="text">Anasayfa</span>
                   </Link>
@@ -101,7 +104,7 @@ export function Sidebar() {
                     pathName == "/users" ? "active" : ""
                   }`}
                 >
-                  <a href="#" onClick={() => toogleSubMenu("users")}>
+                  <a className="menu-link" href="#" onClick={() => toogleSubMenu("users")}>
                     <HiUsers className="main-icon" />
                     <span className="text">Kullanıcılar</span>
 
@@ -132,7 +135,7 @@ export function Sidebar() {
                   </ul>
                 </li>
                 <li className="menu-item">
-                  <a href="#" onClick={() => toogleSubMenu("settings")}>
+                  <a className="menu-link" href="#" onClick={() => toogleSubMenu("settings")}>
                     <IoSettingsSharp className="main-icon" />
                     <span className="text">Ayarlar</span>
                     {isSettingsOpen ? (
@@ -155,10 +158,10 @@ export function Sidebar() {
                   </ul>
                 </li>
                 <li className="">
-                  <a href="">
+                  <span className="menu-link" onClick={onClickLogout}>
                     <AiOutlineLogout className="main-icon" />
                     <span className="text">Çıkış Yap</span>
-                  </a>
+                  </span>
                 </li>
               </ul>
             </div>
