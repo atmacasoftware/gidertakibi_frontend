@@ -15,5 +15,8 @@
   "alreadyAccount": "Zaten hesabınız var mı?",
   "rememberMe": "Beni hatırla",
   "forgotPassword": "Şifremi unuttum",
-  "dontAccount": "Hesabınız yok mu?"
+  "dontAccount": "Hesabınız yok mu?",
+  "save": "Kaydet",
+  "successSwalMessage": "Tebrikler",
+  "successSwalText": "Başarıyla kayıt olundu ! 5 saniye içerisinde giriş ekranına yönlendirileceksiniz !"
 }

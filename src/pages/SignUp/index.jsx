@@ -12,8 +12,8 @@ import Input from "../Panel/shared/Input";
 import Button from "../Panel/shared/Button";
 
 export default function SignUp() {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  const [first_name, setFirstName] = useState();
+  const [last_name, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordRepeat, setPasswordRepeat] = useState();
@@ -27,23 +27,23 @@ export default function SignUp() {
 
   useEffect(() => {
     setErrors(function (lastErrors) {
-      lastErrors.firstName = undefined;
+      lastErrors.first_name = undefined;
       return {
         ...lastErrors,
-        firstName: undefined,
+        first_name: undefined,
       };
     });
-  }, [firstName]);
+  }, [first_name]);
 
   useEffect(() => {
     setErrors(function (lastErrors) {
-      lastErrors.lastName = undefined;
+      lastErrors.last_name = undefined;
       return {
         ...lastErrors,
-        lastName: undefined,
+        last_name: undefined,
       };
     });
-  }, [lastName]);
+  }, [last_name]);
 
   useEffect(() => {
     setErrors(function (lastErrors) {
@@ -79,12 +79,12 @@ export default function SignUp() {
     setApiProgress(true);
 
     try {
-      const response = await signUp({ firstName, lastName, email, password });
+      const response = await signUp({ first_name, last_name, email, password });
       setSuccessMessage(response.data.message);
       sw.fire({
         icon: "success",
-        title: "Tebrikler",
-        text: "Başarıyla kayıt olundu ! 5 saniye içerisinde giriş ekranına yönlendirileceksiniz",
+        title: t("successSwalMessage"),
+        text: t("successSwalText"),
       });
       setTimeout(function () {
         window.location.replace("login");
@@ -123,6 +123,7 @@ export default function SignUp() {
                       <Input
                         type="text"
                         name="first_name"
+                        id="first_name"
                         placeholder={t("firstNameLabel")}
                         tabIndex="10"
                         isRequired={true}

@@ -14,5 +14,8 @@
   "alreadyAccount": "Already have an account?",
   "rememberMe": "Remember me",
   "forgotPassword": "I forgot my password",
-  "dontAccount": "Don't have an account?"
+  "dontAccount": "Don't have an account?",
+  "save": "Save",
+  "successSwalMessage": "Congratulations",
+  "successSwalText": "Successfully registered! You will be directed to the login screen within 5 seconds !"
 }

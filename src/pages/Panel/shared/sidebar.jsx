@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { IoSettingsSharp } from "react-icons/io5";
 import { AiOutlineLogout } from "react-icons/ai";
 import { MdOutlineMenuOpen } from "react-icons/md";
+import ProfileImage from "../components/ProfileImage";
 
 export function Sidebar({authState, dispatch}) {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -81,7 +82,7 @@ export function Sidebar({authState, dispatch}) {
           <div>
             <Link to="/my-account" className="head">
               <div className="user-img">
-              <img src={userImg} alt="User Image" />
+              <ProfileImage image={authState.image} width={44} heigth={44} />
             </div>
             <div className="user-details">
               <p className="name">
