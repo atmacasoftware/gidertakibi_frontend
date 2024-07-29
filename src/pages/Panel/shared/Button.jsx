@@ -1,3 +1,5 @@
+import Spinner from "./Spinner";
+
 export default function Button({
   type,
   btn_display,
@@ -6,15 +8,27 @@ export default function Button({
   width,
   style,
   children,
-  disabled=false
+  apiProgress,
 }) {
   return (
-    <button
-      type={type}
-      disabled={disabled}
-      className={`btn btn-${btn_display} text-${capitalize} ${position} ${width} ${style}`}
-    >
-      {children}
-    </button>
+    <>
+      {!apiProgress ? (
+        <button
+          type={type}
+          className={`btn btn-${btn_display} text-${capitalize} ${position} ${width} ${style}`}
+        >
+          {children}
+        </button>
+      ) : (
+        <button
+          type={type}
+          disabled
+          className={`btn btn-${btn_display} text-${capitalize} ${position} ${width} ${style} d-flex justify-content-center align-items-center`}
+        >
+          <Spinner color={"white"}/>
+          <span className="ms-3">{children}</span>
+        </button>
+      )}
+    </>
   );
 }

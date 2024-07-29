@@ -18,7 +18,7 @@ export default function UserEdit(authState) {
   const [tempImage, setTempImage] = useState();
   const [newImage, setNewImage] = useState();
   const dispatch = useAuthDispatch();
-  const [apiProgress, setApiProgress] = useState(true);
+  const [apiProgress, setApiProgress] = useState(false);
   const [errors, setErrors] = useState({});
   const [generalError, setGeneralError] = useState();
   const { t } = useTranslation();
@@ -123,6 +123,17 @@ export default function UserEdit(authState) {
       } else {
         setGeneralError(t("genericError"));
       }
+      toast.error("Bir hata meydana geldi ! Lütfen tekrar deneyiniz...", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } finally {
       setApiProgress(false);
     }
@@ -130,7 +141,7 @@ export default function UserEdit(authState) {
 
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <PageHeader title="Hesabım" breadList={[["myaccount", "Hesabım"]]} />
       <div className="content myaccount">
         <form className="row" onSubmit={onSubmit}>
@@ -262,7 +273,6 @@ export default function UserEdit(authState) {
                     {t("save")}
                   </Button>
                 </div>
-                {generalError && <div>{generalError}</div>}
               </div>
             </div>
           </div>
