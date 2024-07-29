@@ -7,7 +7,8 @@ import { updateUser } from "./api";
 import ProfileImage from "../../components/ProfileImage";
 import { useAuthDispatch } from "../../../../shared/state/contex";
 import { FaCamera } from "react-icons/fa";
-import { colors } from "@mui/material";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UserEdit(authState) {
   const [firstName, setFirstName] = useState(authState.authState.first_name);
@@ -17,7 +18,7 @@ export default function UserEdit(authState) {
   const [tempImage, setTempImage] = useState();
   const [newImage, setNewImage] = useState();
   const dispatch = useAuthDispatch();
-  const [apiProgress, setApiProgress] = useState(false);
+  const [apiProgress, setApiProgress] = useState(true);
   const [errors, setErrors] = useState({});
   const [generalError, setGeneralError] = useState();
   const { t } = useTranslation();
@@ -26,6 +27,8 @@ export default function UserEdit(authState) {
     setFirstName(event.target.value);
     setErrors({});
   };
+
+  const notify = () => toast("Wow so easy !");
 
   useEffect(() => {
     setErrors(function (lastErrors) {
@@ -77,10 +80,7 @@ export default function UserEdit(authState) {
     fileReader.readAsDataURL(file);
   };
 
-  console.log(tempImage);
-
   const onSubmit = async (event) => {
-    console.log(event);
     event.preventDefault();
     setApiProgress(true);
     setErrors({});
@@ -102,9 +102,18 @@ export default function UserEdit(authState) {
           mobile: data.mobile,
         },
       });
-      console.log(data);
+      toast.success("Başarıyla kaydedildi !", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (axiosError) {
-      console.log(axiosError);
       if (axiosError.response?.data) {
         if (axiosError.response.data.status === 400) {
           setErrors(axiosError.response.data.errorList);
@@ -121,6 +130,7 @@ export default function UserEdit(authState) {
 
   return (
     <>
+    <ToastContainer />
       <PageHeader title="Hesabım" breadList={[["myaccount", "Hesabım"]]} />
       <div className="content myaccount">
         <form className="row" onSubmit={onSubmit}>
@@ -139,15 +149,15 @@ export default function UserEdit(authState) {
                     />
                     <div className="round">
                       <Input
-                    type="file"
-                    name="profile_img"
-                    inputValue=""
-                    placeholder="Profil Fotoğrafı"
-                    tabIndex="10"
-                    isRequired={false}
-                    onChange={onSelectImage}
-                  />
-                      <FaCamera style={{color: "#fff"}} />
+                        type="file"
+                        name="profile_img"
+                        inputValue=""
+                        placeholder="Profil Fotoğrafı"
+                        tabIndex="10"
+                        isRequired={false}
+                        onChange={onSelectImage}
+                      />
+                      <FaCamera style={{ color: "#fff" }} />
                     </div>
                   </div>
                 </div>
@@ -242,6 +252,7 @@ export default function UserEdit(authState) {
                 <div className="mb-3">
                   <Button
                     type="submit"
+                    apiProgress={apiProgress}
                     btn_display="block"
                     capitalize="capitalize"
                     position="text-center"
