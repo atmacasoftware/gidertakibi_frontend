@@ -28,8 +28,6 @@ export default function UserEdit(authState) {
     setErrors({});
   };
 
-  const notify = () => toast("Wow so easy !");
-
   useEffect(() => {
     setErrors(function (lastErrors) {
       lastErrors.firstName = undefined;
